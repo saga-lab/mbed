@@ -252,12 +252,7 @@ int main()
     while (1) {
         if (Mode == DA_TEST) {
             t = (double)timer.read_us() * 0.000001;
-            int d = (int)(t * 250 * 3) % 100;
-            d *= 3;
-            if(d > 300)
-                d = 300;
-            AD = DAAD((short)(d * (1.0 + sin(2.0 * 3.1415926 * 100 * t + (100/40.0) * sin(2.0 * 3.1415926 * 20 * t)))));
-            prevmode = Mode;
+			AD = DAAD((short)(200.0 * (1.0 + sin(2.0 * 3.1415926 * freq * t))));
         } else if (Mode == Zara) {
             AD = DAAD((short)(amp * (1.0 + sin(2.0 * 3.1415926 * freq * cntrspeed))));
             prevmode = Mode;
